@@ -1,5 +1,4 @@
-mod square_n_sum;
-mod tribonacci;
+mod katas;
 
 fn main() {
     println!("Codewars training project");
