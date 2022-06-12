@@ -1,6 +1,7 @@
 #[cfg(test)]
 mod sum_pairs_test {
     use std::collections::HashSet;
+    use test::Bencher;
 
     struct TestData<'a> {
         numbers: &'a [i8],
@@ -13,13 +14,18 @@ mod sum_pairs_test {
             return None;
         }
 
+        // Unique numbers that occur in the ints array
         let mut required_nums: HashSet<i8> = HashSet::new();
 
         for i in ints.iter() {
+            // If [required_nums] contains a number that is necessary for equality:
+            // x + i = s, where x is a number from the required_nums array,
+            // then this means that a pair of numbers is found
             if required_nums.contains(&(s - i)) {
                 return Some((s - i, *i));
             }
 
+            // oztherwise, we add the value to the HashSet
             required_nums.insert(*i);
         }
 
@@ -74,5 +80,34 @@ mod sum_pairs_test {
         for test in tests.iter() {
             assert_eq!(sum_pairs(test.numbers, test.sum), test.expected_result);
         }
+    }
+
+    #[bench]
+    fn bench_sum_pairs_at_the_beginning(b: &mut Bencher) {
+        let mut l9 = vec![1; 10_000_000];
+        l9[0] = 8;
+        l9[1] = -3;
+
+        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
+    }
+
+    #[bench]
+    fn bench_sum_pairs_in_middle(b: &mut Bencher) {
+        let mut l9 = vec![1; 10_000_000];
+        let len = l9.len();
+        l9[len / 2 - 1] = 8;
+        l9[len / 2] = -3;
+
+        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
+    }
+
+    #[bench]
+    fn bench_sum_pairs_at_the_end(b: &mut Bencher) {
+        let mut l9 = vec![1; 10_000_000];
+        let len = l9.len();
+        l9[len - 2] = 8;
+        l9[len - 1] = -3;
+
+        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
     }
 }
