@@ -10,22 +10,13 @@ mod sum_pairs_test {
     }
 
     fn sum_pairs(ints: &[i8], s: i8) -> Option<(i8, i8)> {
-        if ints.len() < 2 {
-            return None;
-        }
-
-        // Unique numbers that occur in the ints array
         let mut required_nums: HashSet<i8> = HashSet::new();
 
         for i in ints.iter() {
-            // If [required_nums] contains a number that is necessary for equality:
-            // x + i = s, where x is a number from the required_nums array,
-            // then this means that a pair of numbers is found
             if required_nums.contains(&(s - i)) {
                 return Some((s - i, *i));
             }
 
-            // oztherwise, we add the value to the HashSet
             required_nums.insert(*i);
         }
 
@@ -35,6 +26,16 @@ mod sum_pairs_test {
     #[test]
     fn sum_pairs_test() {
         let tests = [
+            TestData {
+                numbers: &[],
+                sum: 5,
+                expected_result: None,
+            },
+            TestData {
+                numbers: &[-1, -2, -1, -3, -6, -1],
+                sum: -5,
+                expected_result: Some((-2, -3)),
+            },
             TestData {
                 numbers: &[1, 4, 8, 7, 3, 15],
                 sum: 8,
@@ -84,30 +85,30 @@ mod sum_pairs_test {
 
     #[bench]
     fn bench_sum_pairs_at_the_beginning(b: &mut Bencher) {
-        let mut l9 = vec![1; 10_000_000];
-        l9[0] = 8;
-        l9[1] = -3;
+        let mut nums = vec![1; 10_000_000];
+        nums[0] = 8;
+        nums[1] = -3;
 
-        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
+        b.iter(|| assert_eq!(sum_pairs(&nums, 5), Some((8, -3))));
     }
 
     #[bench]
     fn bench_sum_pairs_in_middle(b: &mut Bencher) {
-        let mut l9 = vec![1; 10_000_000];
-        let len = l9.len();
-        l9[len / 2 - 1] = 8;
-        l9[len / 2] = -3;
+        let mut nums = vec![1; 10_000_000];
+        let len = nums.len();
+        nums[len / 2 - 1] = 8;
+        nums[len / 2] = -3;
 
-        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
+        b.iter(|| assert_eq!(sum_pairs(&nums, 5), Some((8, -3))));
     }
 
     #[bench]
     fn bench_sum_pairs_at_the_end(b: &mut Bencher) {
-        let mut l9 = vec![1; 10_000_000];
-        let len = l9.len();
-        l9[len - 2] = 8;
-        l9[len - 1] = -3;
+        let mut nums = vec![1; 10_000_000];
+        let len = nums.len();
+        nums[len - 2] = 8;
+        nums[len - 1] = -3;
 
-        b.iter(|| assert_eq!(sum_pairs(&l9, 5), Some((8, -3))));
+        b.iter(|| assert_eq!(sum_pairs(&nums, 5), Some((8, -3))));
     }
 }
