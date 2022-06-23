@@ -1,6 +1,6 @@
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize};
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct MovieDetails {
     pub adult: bool,
     pub backdrop_path: Option<String>,
@@ -28,13 +28,13 @@ pub struct MovieDetails {
     pub vote_count: i64,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Genre {
     pub id: i64,
     pub name: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct ProductionCompany {
     pub id: i64,
     pub logo_path: Option<String>,
@@ -42,13 +42,13 @@ pub struct ProductionCompany {
     pub origin_country: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct ProductionCountry {
     pub iso_3166_1: String,
     pub name: String,
 }
 
-#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct SpokenLanguage {
     pub iso_639_1: String,
     pub name: String,
