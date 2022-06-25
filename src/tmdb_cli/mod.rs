@@ -1,4 +1,6 @@
-mod movie_details;
-pub use movie_details::MovieDetails;
+mod configuration;
 
+mod models;
+
+pub mod api;
 pub mod cli;
