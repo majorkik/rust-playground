@@ -896,6 +896,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 
 [[package]]
+name = "tmdb_cli"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "futures",
+ "itertools",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
 name = "tokio"
 version = "1.19.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -974,19 +987,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7709595b8878a4965ce5e87ebf880a7d39c9afc6837721b21a5a816a8117d921"
 dependencies = [
  "once_cell",
-]
-
-[[package]]
-name = "training"
-version = "0.1.0"
-dependencies = [
- "clap",
- "futures",
- "itertools",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
 ]
 
 [[package]]

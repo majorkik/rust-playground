@@ -18,7 +18,7 @@ pub struct MovieArgs {
     #[clap(value_parser)]
     pub id: u32,
 
-    #[clap(short, long, arg_enum)]
+    #[clap(short, long, arg_enum, default_value_t = MovieViewMode::Default)]
     pub mode: MovieViewMode,
 }
 

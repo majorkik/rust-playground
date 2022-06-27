@@ -1,5 +1,5 @@
 [package]
-name = "training"
+name = "tmdb_cli"
 version = "0.1.0"
 edition = "2021"
 
