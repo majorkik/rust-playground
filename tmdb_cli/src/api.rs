@@ -45,7 +45,7 @@ pub async fn get_movie_details_full(id: u32) -> ExtendedMovieDetails {
 
     if let Ok(images) = movie_images {
         extended_details.movie_images = Some(images);
-    } 
+    }
 
     if let Ok(credits) = movie_credits {
         extended_details.movie_credits = Some(credits);

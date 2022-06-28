@@ -2,7 +2,7 @@
 
 ## Todo
 
-[ ] [tmdb_cli]: Add default value for display mode
+[x] [tmdb_cli]: Add default value for display mode
 
 ## 📝 License
 

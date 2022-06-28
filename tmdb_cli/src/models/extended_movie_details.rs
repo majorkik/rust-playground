@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use super::{MovieDetails, MovieImages, MovieCredits};
+use super::{MovieCredits, MovieDetails, MovieImages};
 
 pub struct ExtendedMovieDetails {
     pub movie_details: Option<MovieDetails>,

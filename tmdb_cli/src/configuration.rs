@@ -1,5 +1,5 @@
-pub const TMDB_API_URL: &str = "https://api.themoviedb.org/3";
-pub const TMDB_API_KEY: &str = "6c6222ae2b7074b6260fcd8db18cb2a9";
+const TMDB_API_URL: &str = "https://api.themoviedb.org/3";
+const TMDB_API_KEY: &str = "6c6222ae2b7074b6260fcd8db18cb2a9";
 
 pub enum TMDbEndpoint {
     Movie(MovieEndpoint),

@@ -18,7 +18,7 @@ pub struct MovieArgs {
     #[clap(value_parser)]
     pub id: u32,
 
-    #[clap(short, long, arg_enum, default_value_t = MovieViewMode::Default)]
+    #[clap(short, long, arg_enum, default_value_t)]
     pub mode: MovieViewMode,
 }
 
@@ -28,6 +28,12 @@ pub enum MovieViewMode {
     Images,
     Credits,
     Full,
+}
+
+impl Default for MovieViewMode {
+    fn default() -> Self {
+        MovieViewMode::Default
+    }
 }
 
 impl FromArgMatches for TypeSub {
