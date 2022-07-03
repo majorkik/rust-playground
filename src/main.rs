@@ -1,9 +1,9 @@
 #![feature(test)]
 
-mod katas;
-
 extern crate test;
 
+mod katas;
+
 fn main() {
-    println!("Codewars training project");
+    println!("This module contains tasks from codewars in the form of tests!");
 }
