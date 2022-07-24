@@ -1,3 +1,4 @@
+mod add_two_nums;
 mod counting_duplicates;
 mod duplicate_encode;
 mod reducing_by_steps;
